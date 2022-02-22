@@ -1,0 +1,74 @@
+swagger: "2.0"
+
+info:
+  title: CodeLab API
+  description: CodeLab API test
+  contact:
+    email: codelab@test.com
+    url: CodeLab.com
+
+schemes: [http, https]
+
+paths:
+  /users:
+    get:
+      summary: get all users
+      description: endpoint for all users
+
+      responses:
+        200:
+          decription: success
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+
+  /users/{userID}:
+    get:
+      summary: get all users
+      description: endpoint for all users
+
+      parameters:
+        - name: userID
+          required: true
+          in: path
+
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+      responses:
+        200:
+          description: success
+
+  /create:
+    post:
+      summary: create new user
+      description: endpoint for creating user
+      produces:
+        - application/json
+      consumes:
+        - application/json
+
+      parameters:
+        - in: body
+          name: user
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+
+      responses:
+        201:
+          decription: success

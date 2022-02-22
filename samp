@@ -1,0 +1,88 @@
+swagger: "2.0"
+
+info:
+  title: CodeLab API
+  description: a simple for API
+  contact:
+    email: CodeLab@test.com
+    url: https://CodeLab.com
+
+schemes: [http, https]
+
+paths:
+  /:
+    get:
+      summary: this will return all entries
+      description: this route will return all entries for the GET API
+      responses:
+        200:
+          description: success
+          schema:
+            type: string
+
+  /user:
+    get:
+      summary: this return an object of a user
+      description: this return an object of a user
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+
+  /users:
+    get:
+      summary: this return an array of a user
+      description: this return an array of a user
+      responses:
+        200:
+          description: success
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+
+  /users/{userID}:
+    get:
+      summary: this return an array of a user
+      description: this return an array of a user
+      parameters:
+        - name: userID
+          in: path
+          required: true
+          schema:
+          type: integer
+      responses:
+        200:
+          description: success
+
+  /create:
+    post:
+      summary: creating the post route
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+      responses:
+        201:
+          description: success
